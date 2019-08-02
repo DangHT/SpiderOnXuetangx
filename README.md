@@ -24,9 +24,9 @@
 
    可以看到正在爬取数据
 
-   ![](C:\Users\dht92\Desktop\QQ截图20190802230234.jpg)
+   ![](https://github.com/DangHT/SpiderOnXuetangx/raw/master/SpiderOnXuetangx/images/runtime.jpg)
 
 7. 爬取介绍后，打开MongoDB Compass查看数据
 
-   ![](C:\Users\dht92\Desktop\QQ截图20190802230744.jpg)
+   ![](https://github.com/DangHT/SpiderOnXuetangx/raw/master/SpiderOnXuetangx/images/mongodb.jpg)
 
