@@ -58,7 +58,7 @@ class ToCsvPipeline(object):
 
     def __init__(self):
         #csv文件位置，无需事先创建
-        store_file = os.path.dirname(__file__) + '/spiders/course.csv'
+        store_file = os.path.dirname(__file__) + '/course.csv'
         #打开（创建）文件
         self.file = open(store_file, 'w', encoding="utf-8", newline='')
         #csv写入
