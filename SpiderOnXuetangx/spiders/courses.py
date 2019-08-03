@@ -12,6 +12,7 @@ class CoursesSpider(scrapy.Spider):
     courses_url = 'http://www.xuetangx.com/courses?credential=0&page_type=0&cid=0&process=0&org=0&course_mode=0&page={page}'
 
     page = 1    # 记录当前页数
+    id = 1
 
     def start_requests(self):
         yield scrapy.Request(self.courses_url.format(page=self.page), self.parse)
@@ -30,6 +31,7 @@ class CoursesSpider(scrapy.Spider):
             starttime = course.css('div > div.fl.list_inner_right.cf > div > div.cf.teacher > div.fl.name > ul > li:nth-child(2) > span::text').extract_first()
             enrollment_sum = course.css('div > div.fl.list_inner_right.cf > div > div.cf.teacher > div.fl.name > ul > li:nth-child(3) > span::text').extract_first()
             introduction = course.css('div > div.fl.list_inner_right.cf > div > div.txt_all > p.txt::text').extract_first()
+            image = 'http://www.xuetangx.com' + course.css('div > div.img.fl > a > img::attr(src)').extract_first()
             if introduction is None:
                 introduction = course.css('div > div.fl.list_inner_right.cf > div > div.txt_all > p.ktxt::text').extract_first()
             href = response.urljoin(course.css('div > div.fl.list_inner_right.cf > div > a::attr(href)').extract_first())
@@ -45,6 +47,9 @@ class CoursesSpider(scrapy.Spider):
             if introduction is not None:
                 item['introduction'] = ''.join(list(filter(str.isalnum, introduction)))
             item['href'] = href
+            item['image'] = image
+            item['course_id'] = self.id
+            self.id += 1
             yield item
 
         self.page += 1

@@ -9,6 +9,7 @@ import scrapy
 
 
 class CourseItem(scrapy.Item):
+    course_id = scrapy.Field()
     course_title = scrapy.Field()
     model = scrapy.Field()
     subject = scrapy.Field()
@@ -19,3 +20,4 @@ class CourseItem(scrapy.Item):
     enrollment_sum = scrapy.Field()
     introduction = scrapy.Field()
     href = scrapy.Field()
+    image = scrapy.Field()
